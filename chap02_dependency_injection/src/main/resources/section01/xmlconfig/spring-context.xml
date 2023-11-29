@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 생성자 기반 -->
+    <!-- DI : 의존성 주입 -->
+    <!-- account 만들어줌 (래퍼런스 타입이므로 의존성 주입) -->
+    <bean id="account" class="com.ohgiraffers.common.PersonalAccount">
+        <!-- 생성자의 위치에 값을 넣어줌 -->
+        <constructor-arg index="0" value="20"/>
+        <constructor-arg index="1" value="110-234-567890"/>
+    </bean>
+
+    <!-- setter 기반 -->
+    <!-- IOC : 제어의 역전 (제어 흐름을 직접 제어하는 것이 아닌 외부에서 관리하는 것)-->
+    <bean id="member" class="com.ohgiraffers.common.MemberDTO">
+        <property name="seq" value="1"/>
+        <property name="name" value="홍길동"/>
+        <property name="phone" value="010-2323-3333"/>
+        <property name="email" value="hong@gmail.com"/>
+        <property name="personalAccount" ref="account"/>
+    </bean>
+</beans>
